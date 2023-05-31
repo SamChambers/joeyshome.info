@@ -5,12 +5,18 @@
     <link rel="icon" 
         type="image/png" 
         href="favicon.png">
-    <title>Joeys Home</title>
+    <title>Joeys Home</title>  
 </head>
 <body>
     
+            <!-- Header -->
+            <!-- <a class="logo-block"><img onclick="play_pause('header-logo')" id="header-logo" src="assets/jhe_logo.png"></a> -->
+            <a class="logo-block"><img onclick="play_pause('header-logo')" id="header-logo" src="assets/jhe_logo.png"></a>
+ 
+
+
     <!-- Logo-->
-    <a id="logo-block"><img src="assets/jhe_logo.png" alt="Joeys Home logo" id="logo"></a>
+    <!-- <a class="logo-block"><img src="assets/jhe_logo.png" alt="Joeys Home logo" class="logo"></a> -->
 
     <!-- Profile name-->
     <div class="title">
@@ -20,7 +26,7 @@
         <h3>Home is where<br>the <a class="art">ART</a> is.</h3>
     </div>
 
-    <video width="320" height="240" controls>
+    <video class="video" controls>
         <source src="assets/jh-promo.mp4" type="video/mp4">
         <source src="movie.ogg" type="video/ogg">
       Your browser does not support the video tag.
@@ -29,6 +35,14 @@
     <div class="bio">
         <h4>Stay tuned,<br>Boston.</h4>
     </div>
+
+    <!-- <hr align="center" width="50%" color="black">
+
+    <div class="about-div">
+        <div class="header-container"><h2 class="headers">About</h2></div>
+
+
+    </div> -->
 
     <hr align="center" width="50%" color="black">
 
@@ -52,6 +66,12 @@
 
         <div>
             <p><a id="pbw" title="PartyBoy Woodz linktr.bio" href="https://linkr.bio/Partyboywoodz" class="artists">PartyBoy Woodz</a></p>
+            
+    <!-- <video class="video" controls>
+        <source src="assets/Go-To-Marz_promo.mp4" type="video/mp4">
+        <source src="movie.ogg" type="video/ogg">
+      Your browser does not support the video tag.
+    </video> -->
             <p><a id="bmljr" title="BML J.R linktr.ee" href="https://linktr.ee/BMLJR" class="artists">BML J.R</a></p>
             <p><a id="nova6k" title="Nova6k linktr.ee" href="https://linktr.ee/nova6k" class="artists">Nova6k</a></p>
         </div>
@@ -59,10 +79,16 @@
 
     <hr align="center" width="50%" color="black">
 
-    <div class="socials-block">
+    <!-- <div class="socials-block"> -->
         <!-- <p><a href="https://www.facebook.com/" class="social">Facebook</a></p> -->
         <!-- <p><a href="https://www.instagram.com/joeyshomeentertainment/" class="social">Instagram</a></p> -->
-        <a href="https://www.instagram.com/joeyshomeentertainment/"><img class="social-icon" src="assets/ig-icon.svg"/></a>
+        <!-- <a href="https://www.instagram.com/joeyshomeentertainment/"><img class="social-icon" src="assets/ig-icon.svg"/></a> -->
+        <a class="icons-link" id="website-link" href="https://www.instagram.com/joeyshomeentertainment/">
+            <div class="cross-fade">
+                <img class="bottom" id="website-hover" src="assets/ig-icon.png">
+                <img class="top" id="website" src="assets/ig-icon.svg">
+            </div>
+        </a>
     </div>
 
     <div id="contact-block">
@@ -74,6 +100,49 @@
         <a id="sitesbysam" href="https://sitesbysam.dev">sitesbysam.dev</a></p>
     </div>
  
+
+<script>
+    var song = new Audio('assets/sounds/joeyshome.aac');
+
+    song.onended = function() {
+        song.pause();
+        document.getElementById("header-logo").src = "assets/jhe_logo.png";
+    }
+
+    //Plays the song. Just pass the id of the audio element.
+    function play_pause(id){
+        // document.getElementById("header-logo").src = "assets/jhe_logo.png";
+
+        if (!song.paused){
+            song.pause();
+            document.getElementById("header-logo").src = "assets/jhe_logo.png";
+        } else {
+            document.getElementById("header-logo").src = "assets/logos/plm_stack.png";
+            // var rand = Math.floor(Math.random() * 5);
+            // switch (rand) {
+            //     case 0:
+            //         document.getElementById("header-logo").src = "assets/ig-icon.png";
+            //         break;
+            //     case 1:
+            //         document.getElementById("header").src = "assets/webtitle-1.png";
+            //         break;
+            //     case 2:
+            //         document.getElementById("header").src = "assets/webtitle-2.png";
+            //         break;
+            //     case 3:
+            //         document.getElementById("header").src = "assets/webtitle-3.png";
+            //         break;
+            //     case 4:
+            //         document.getElementById("header").src = "assets/webtitle-4.png";
+            //         break;
+            //     default: 
+            //         document.getElementById("header").src = "assets/webtitle-default.png";
+            //         break;
+                song.play();
+        }
+    }
+</script>
+
 </body>
 
 <style>
@@ -108,33 +177,69 @@ body {
     letter-spacing: 2px;
 }
 
-img {
+    .cross-fade {
+        position:relative;
+        height:75px;
+        width:75px;
+        margin:0 auto;
+    } .cross-fade img {
+        width: auto;
+        height: 100%;
+        position:absolute;
+        left:0;
+        -webkit-transition: opacity 0.3s ease-in-out;
+        -moz-transition: opacity 0.3s ease-in-out;
+        -o-transition: opacity 0.3s ease-in-out;
+        transition: opacity 0.3s ease-in-out;
+    } .cross-fade img.top:hover {
+        opacity:0;
+    }  
+
+/* img {
     border-radius: 0%;
     scale: 100%;
-  }
+  } */
 
-#logo-block {
+.video {
+    max-width: 320px;
+    border: 5px solid black;
+} .video:hover {
+    border: 5px solid rgb(81, 188, 115);
+}
+
+#header-logo {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        /* padding-top: 20px; */
+        max-height: 100%;
+        max-width: 300px;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+.logo-block {
     display: block;
     padding-top: 20px;
     margin-left: auto;
     margin-right: auto;
     margin-top: auto;
-    height: auto;
+    height: 225px;
     max-width: 300px;
-} #logo {
+} .logo {
     display: block;
     padding-top: 20px;
     margin-left: auto;
     margin-right: auto;
     margin-top: auto;
-    height: auto;
+    max-height: 300px;
     max-width: 300px;
   }
 
 .title {
     /* line-height: 1%; */
     font-size: 30px;
-    margin-top: 50px;
+    /* margin-top: 20px; */
     margin-bottom: 50px;
     margin-left: auto;
     margin-right: auto;
@@ -171,12 +276,12 @@ img {
     color: rgb(237, 31, 92);
     /* text-decoration: overline; */
     transition: 1500ms;
-    transform: rotate(15deg) rotateY(30deg);
+    transform: rotate(12deg) rotateY(30deg);
 } .art:hover {
     color: rgb(81, 185, 212);
     text-decoration: underline;
     cursor: crosshair;
-    transform: rotate(-3755deg) rotateY(-390deg);
+    transform: rotate(-375deg) rotateY(-390deg);
 }
 
 .header-container {
@@ -221,7 +326,7 @@ img {
     margin-right: auto;
     margin-top: auto;
     height: auto;
-    max-width: 350px;
+    max-width: 300px;
     border: 5px solid black;
     transition: 1500ms;
 } .event-picture:hover {
